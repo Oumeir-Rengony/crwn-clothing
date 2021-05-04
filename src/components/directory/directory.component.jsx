@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
-import sectionsData from './directory.data';
+import React from 'react';
+import sections from './directory.data';
 import MenuItem from '../menu-item/menu-item.component';
 import './directory.styles.scss';
 
 const Directory = () => {
 
-    const [sections, SetSection] = useState([...sectionsData]);
-
     return(
         <div className="directory-menu">
             {
-                sections.map(({id, title, imageUrl, size}) => (
-                    <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}/>
+                sections.map(({id, ...otherSectionProps}) => (
+                    <MenuItem key={id} {...otherSectionProps}/>
                 ))
             }
         </div>
