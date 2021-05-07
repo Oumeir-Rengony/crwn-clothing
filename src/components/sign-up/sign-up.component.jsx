@@ -18,13 +18,6 @@ const SignUp = () => {
 
     const [userAccount, setUserAccount] = useState(defaultUserAccount);
 
-    // const [userAccount, setUserAccount] = useState({
-    //     displayName: '',
-    //     email: '',
-    //     password: '',
-    //     confirmPassword: ''
-    // });
-
     const {displayName, email, password, confirmPassword} = userAccount;
 
     const handleSubmit = async event => {
@@ -38,12 +31,7 @@ const SignUp = () => {
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
             await createUserProfileDocument(user, {displayName});
-            // setUserAccount({
-            //     displayName: '',
-            //     email: '',
-            //     password: '',
-            //     confirmPassword: ''
-            // });
+
             setUserAccount(defaultUserAccount);
         }
         catch(error){
@@ -104,7 +92,7 @@ const SignUp = () => {
                     required
                 >   
                 </FormInput>
-                <CustomButton type="submit">SIGN UP</CustomButton>
+                <CustomButton type="button">SIGN UP</CustomButton>
             </form>
         </div>
     );
