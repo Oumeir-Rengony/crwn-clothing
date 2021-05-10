@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+
 import {useSelector} from 'react-redux';
+import {selectCurrentUser} from '../../redux/user/user.selectors';
 
 import {auth} from '../../firebase/firebase-utils';
+
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
@@ -12,8 +15,7 @@ import './header.styles.scss';
 const Header = () => {
 
     //STATE
-    const {currentUser} = useSelector(state => state.user);
-    const {hidden: isCartHidden} = useSelector(state => state.cart);
+    const currentUser = useSelector(selectCurrentUser);
 
     return(
         <div className="header">
@@ -30,11 +32,8 @@ const Header = () => {
                 }
                 <CartIcon />
             </div>
-            {
-                isCartHidden
-                ? null
-                : <CartDropdown />
-            }
+                
+                <CartDropdown />
         </div>
     )
 };

@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {selectCurrentUser} from './redux/user/user.selectors';
 import {setCurrentUser} from './redux/user/user.actions';
 
 import './App.css';
@@ -10,6 +11,7 @@ import HomePage from './Pages/homepage/homepage.component';
 import ShopPage from './Pages/shop/shop.component';
 import SignInAndSignUpPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component';
+import CheckOutPage from './Pages/checkout/checkout.component';
 
 import {auth, createUserProfileDocument} from './firebase/firebase-utils';
 
@@ -19,7 +21,7 @@ function App() {
   const dispatch = useDispatch();
 
   //STATE
-  const {currentUser} = useSelector(state => state.user);
+  const currentUser = useSelector(selectCurrentUser);
   
   useEffect(() => {
     let unsubscribeFromAuth = null;
@@ -48,6 +50,9 @@ function App() {
         </Route>
         <Route path="/shop">
           <ShopPage />
+        </Route>
+        <Route path="/checkout" exact>
+          <CheckOutPage />
         </Route>
         <Route path="/signin">
           {
