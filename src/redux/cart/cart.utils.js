@@ -30,6 +30,6 @@ export const RemoveItemFromCart = (cartItems, cartItemToRemove) => {
 
 };
 
-const findExistingCartItem = (cartItems, cartItemToHandle) => {
-    return cartItems.find(cartItem => cartItem.id === cartItemToHandle.id);
+const findExistingCartItem = (cartItems, cartItemToCheck) => {
+    return cartItems.find(cartItem => cartItem.id === cartItemToCheck.id);
 };
