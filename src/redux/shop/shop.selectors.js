@@ -13,7 +13,7 @@ export const selectCollections = createSelector(
 export const selectCollectionsForPreview = createSelector(
     [selectCollections],
 
-    (collections) => Object.Keys(collections).map(key => collections[key])
+    (collections) => Object.keys(collections).map(key => collections[key])
 );
 
 /*  selectCollection is not memoized due to collectionUrlParam being passed in 
