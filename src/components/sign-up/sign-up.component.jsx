@@ -41,9 +41,9 @@ const SignUp = () => {
 
     const handleChange = event => {
         const {name, value} = event.target;
-        setUserAccount(prev =>{
+        setUserAccount(prevState =>{
             return {
-               ...prev,
+               ...prevState,
                [name]: value 
             }
         });
