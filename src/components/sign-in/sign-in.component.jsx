@@ -9,22 +9,30 @@ import './sign-in.styles.scss';
 
 const SignIn = () => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+
+    const [userCredentials, setUserCredentials] = useState({email: '', password:''});
 
     const handleSubmit = async event => {
 
         event.preventDefault();
 
+        const {email, password} = userCredentials;
+
         try{
             await auth.signInWithEmailAndPassword(email, password); 
-            setEmail('');
-            setPassword('');
+            setUserCredentials({email: '', password:''});
         }
         catch(error){
             console.log(error);
         }
 
+    };
+
+    const handleInputChange = async event => {
+        const {value, name} = event.target;
+        setUserCredentials((prevState) => ({...prevState, [name]:value}));
     };
 
     return(
@@ -36,17 +44,17 @@ const SignIn = () => {
                 <FormInput 
                     name="email" 
                     type="email" 
-                    value={email}
+                    value={userCredentials.email}
                     label="email"
-                    handleChange={(e) => setEmail(e.target.value)}
+                    handleInputChange={handleInputChange}
                     required
                 />
                 <FormInput 
                     name="password" 
                     type="password" 
-                    value={password}
+                    value={userCredentials.password}
                     label="password"
-                    handleChange={(e) => setPassword(e.target.value)} 
+                    handleInputChange={handleInputChange} 
                     required
                 />
                 <div className="buttons">         

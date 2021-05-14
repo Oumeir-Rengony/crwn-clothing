@@ -22,7 +22,7 @@ function App() {
 
   //STATE
   const currentUser = useSelector(selectCurrentUser);
-  
+    
   useEffect(() => {
     let unsubscribeFromAuth = null;
     unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -35,7 +35,7 @@ function App() {
           }));
         });
       }
-      dispatch(setCurrentUser(userAuth));
+      dispatch(setCurrentUser(userAuth));      
     });
 
     return () => unsubscribeFromAuth();

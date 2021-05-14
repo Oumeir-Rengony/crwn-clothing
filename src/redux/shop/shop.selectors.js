@@ -13,7 +13,9 @@ export const selectCollections = createSelector(
 export const selectCollectionsForPreview = createSelector(
     [selectCollections],
 
-    (collections) => Object.keys(collections).map(key => collections[key])
+    (collections) => {
+        return collections? Object.keys(collections).map(key => collections[key]): []
+    }
 );
 
 /*  selectCollection is not memoized due to collectionUrlParam being passed in 
@@ -24,6 +26,6 @@ export const selectCollection = memoize((collectionUrlParam) => {
     return createSelector(
         [selectCollections],
 
-        (collections) => collections[collectionUrlParam]
+        (collections) => collections? collections[collectionUrlParam]: null
     )
 });
