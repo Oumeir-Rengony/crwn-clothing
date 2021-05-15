@@ -1,20 +1,13 @@
 import React, {useEffect} from 'react';
 
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {fetchCollectionsStartAsync} from '../../redux/shop/shop.actions';
-import {selectIsCollectionFetching, selectIsCollectionsLoaded} from '../../redux/shop/shop.selectors';
 
 import {Route, useRouteMatch} from 'react-router-dom';
 
-import WithSpinner from '../../components/with-spinner/with-spinner.component';
-import CollectionPage from '../collection/collection.components';
-import CollectionOverview from '../../components/collections-overview/collections-overview.component';
+import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
+import CollectionPageContainer from '../../Pages/collection/collection.container';
 
-
-
-//Wrapping component with a Loading animation
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionOverview);
-const CollectionsPageWithSpinner = WithSpinner(CollectionPage);
 
 const ShopPage = () => {
 
@@ -24,9 +17,6 @@ const ShopPage = () => {
     //DISPATCH
     const dispatch = useDispatch();
     
-    const isCollectionFetched = useSelector(selectIsCollectionFetching);
-    const isCollectionsLoaded = useSelector(selectIsCollectionsLoaded);
-
     useEffect(()=> {
         dispatch(fetchCollectionsStartAsync());
     }, [dispatch]);
@@ -34,11 +24,11 @@ const ShopPage = () => {
     return (
         <div className="shop-page">
             <Route path={`${match.path}`} exact>
-                <CollectionsOverviewWithSpinner isLoading={isCollectionFetched}/>
+                <CollectionsOverviewContainer />
             </Route>
 
             <Route path={`${match.path}/:collectionId`} >
-                <CollectionsPageWithSpinner isLoading={!isCollectionsLoaded}/>
+                <CollectionPageContainer/>
             </Route>
             
         </div>
