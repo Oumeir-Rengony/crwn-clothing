@@ -1,9 +1,4 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {selectCurrentUser} from './redux/user/user.selectors';
-import {setCurrentUser} from './redux/user/user.actions';
-
-import './App.css';
+import React, {useContext} from 'react';
 
 import {Switch, Route, Redirect} from 'react-router-dom';
 
@@ -13,35 +8,17 @@ import SignInAndSignUpPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up
 import Header from './components/header/header.component';
 import CheckOutPage from './Pages/checkout/checkout.component';
 
-import {auth, createUserProfileDocument} from './firebase/firebase-utils';
+import { CurrentUserContext } from './provider/current-user/current-user.provider';
+
+import './App.css';
+
 
 function App() {
 
-  //DISPATCH
-  const dispatch = useDispatch();
-
-  //STATE
-  const currentUser = useSelector(selectCurrentUser);
-  
-  useEffect(() => {
-    let unsubscribeFromAuth = null;
-    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
-          dispatch(setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          }));
-        });
-      }
-      dispatch(setCurrentUser(userAuth));
-    });
-
-    return () => unsubscribeFromAuth();
-  }, [dispatch])
+  const currentUser = useContext(CurrentUserContext);
 
   return (
+
     <div>
       <Header />
       <Switch>
@@ -60,6 +37,7 @@ function App() {
           } 
         </Route>
       </Switch>
+
     </div>
   );
 };

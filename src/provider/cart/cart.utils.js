@@ -30,6 +30,22 @@ export const RemoveItemFromCart = (cartItems, cartItemToRemove) => {
 
 };
 
+export const filterItemFromCart = (cartItems, item) => {
+    return cartItems.filter(cartItem => cartItem.id !==item.id)
+};
+
+export const getCartItemsCount = (cartItems) => {
+    return cartItems.reduce((accumulatedQuantity, cartItem) => {
+        return accumulatedQuantity + cartItem.quantity;
+    }, 0);
+};
+
+export const getCartTotal = (cartItems) => {
+    return cartItems.reduce((accumulatedQuantity, cartItem) => {
+        return accumulatedQuantity + cartItem.quantity * cartItem.price;
+    }, 0);
+}
+
 const findExistingCartItem = (cartItems, cartItemToCheck) => {
     return cartItems.find(cartItem => cartItem.id === cartItemToCheck.id);
 };

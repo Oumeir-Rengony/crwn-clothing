@@ -8,7 +8,6 @@ import {auth, signInWithGoogle} from '../../firebase/firebase-utils';
 import './sign-in.styles.scss';
 
 const SignIn = () => {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

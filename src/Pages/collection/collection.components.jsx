@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
-import { useSelector } from 'react-redux';
-import {selectCollection} from '../../redux/shop/shop.selectors';
+import {CollectionsContext} from '../../provider/collections/collections.provider';
 
 import {useParams} from 'react-router-dom';
 
@@ -13,8 +12,10 @@ const CollectionPage = () => {
 
     const {collectionId: collectionUrlParam} = useParams();
 
-    //Collection Item
-    const {title, items} = useSelector(selectCollection(collectionUrlParam));
+    const {collections} = useContext(CollectionsContext);
+    
+    const collection = collections[collectionUrlParam];
+    const {title, items} = collection;
 
     return(
         <div className="collection-page">
