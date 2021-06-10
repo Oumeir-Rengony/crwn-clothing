@@ -8,9 +8,9 @@ import SignInAndSignUpPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up
 import Header from './components/header/header.component';
 import CheckOutPage from './Pages/checkout/checkout.component';
 
-import { CurrentUserContext } from './provider/current-user/current-user.provider';
+import { CurrentUserContext } from './context/current-user/current-user.provider';
 
-import './App.css';
+import './App.scss';
 
 
 function App() {

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import {CollectionsContext} from '../../provider/collections/collections.provider';
+import {CollectionsContext} from '../../context/collections/collections.provider';
 
 import {useParams} from 'react-router-dom';
 

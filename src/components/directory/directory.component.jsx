@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { DirectoryContext } from '../../provider/directory/directory.provider';
+import { DirectoryContext } from '../../context/directory/directory.provider';
 
 import MenuItem from '../menu-item/menu-item.component';
 

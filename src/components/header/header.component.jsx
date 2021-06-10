@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
 
-import {CurrentUserContext} from '../../provider/current-user/current-user.provider';
+import {CurrentUserContext} from '../../context/current-user/current-user.provider';
 
 import {auth} from '../../firebase/firebase-utils';
 
