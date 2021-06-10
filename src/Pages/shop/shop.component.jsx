@@ -2,8 +2,8 @@ import React from 'react';
 
 import {Route, useRouteMatch} from 'react-router-dom';
 
-import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
-import CollectionPageContainer from '../../Pages/collection/collection.container';
+import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
+import CollectionPage from '../../Pages/collection/collection.component';
 
 
 const ShopPage = () => {
@@ -14,11 +14,11 @@ const ShopPage = () => {
     return (
         <div className="shop-page">
             <Route path={`${match.path}`} exact>
-                <CollectionsOverviewContainer />
+                <CollectionsOverview />
             </Route>
 
             <Route path={`${match.path}/:collectionId`} >
-                <CollectionPageContainer/>
+                <CollectionPage/>
             </Route>
             
         </div>
