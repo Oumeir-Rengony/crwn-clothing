@@ -1,7 +1,4 @@
-import React, {useEffect} from 'react';
-
-import {useDispatch} from 'react-redux';
-import {fetchCollectionsStartAsync} from '../../redux/shop/shop.actions';
+import React from 'react';
 
 import {Route, useRouteMatch} from 'react-router-dom';
 
@@ -14,13 +11,6 @@ const ShopPage = () => {
     //react-router hooks
     const match = useRouteMatch();
 
-    //DISPATCH
-    const dispatch = useDispatch();
-    
-    useEffect(()=> {
-        dispatch(fetchCollectionsStartAsync());
-    }, [dispatch]);
-    
     return (
         <div className="shop-page">
             <Route path={`${match.path}`} exact>

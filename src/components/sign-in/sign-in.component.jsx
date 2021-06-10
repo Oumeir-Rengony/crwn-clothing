@@ -8,16 +8,8 @@ import {auth, signInWithGoogle} from '../../firebase/firebase-utils';
 import './sign-in.styles.scss';
 
 const SignIn = () => {
-<<<<<<< HEAD
-
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
 
     const [userCredentials, setUserCredentials] = useState({email: '', password:''});
-=======
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
->>>>>>> ContextApi
 
     const handleSubmit = async event => {
 

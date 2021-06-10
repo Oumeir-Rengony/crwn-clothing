@@ -13,27 +13,7 @@ import { CurrentUserContext } from './context/current-user/current-user.provider
 import './App.scss';
 
 
-<<<<<<< HEAD
-  //STATE
-  const currentUser = useSelector(selectCurrentUser);
-    
-  useEffect(() => {
-    let unsubscribeFromAuth = null;
-    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
-          dispatch(setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          }));
-        });
-      }
-      dispatch(setCurrentUser(userAuth));      
-    });
-=======
 function App() {
->>>>>>> ContextApi
 
   const currentUser = useContext(CurrentUserContext);
 
