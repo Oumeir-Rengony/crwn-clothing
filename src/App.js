@@ -1,9 +1,4 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {selectCurrentUser} from './redux/user/user.selectors';
-import {setCurrentUser} from './redux/user/user.actions';
-
-import './App.css';
+import React, {useContext} from 'react';
 
 import {Switch, Route, Redirect} from 'react-router-dom';
 
@@ -13,13 +8,12 @@ import SignInAndSignUpPage from './Pages/sign-in-and-sign-up/sign-in-and-sign-up
 import Header from './components/header/header.component';
 import CheckOutPage from './Pages/checkout/checkout.component';
 
-import {auth, createUserProfileDocument} from './firebase/firebase-utils';
+import { CurrentUserContext } from './context/current-user/current-user.provider';
 
-function App() {
+import './App.scss';
 
-  //DISPATCH
-  const dispatch = useDispatch();
 
+<<<<<<< HEAD
   //STATE
   const currentUser = useSelector(selectCurrentUser);
     
@@ -37,11 +31,14 @@ function App() {
       }
       dispatch(setCurrentUser(userAuth));      
     });
+=======
+function App() {
+>>>>>>> ContextApi
 
-    return () => unsubscribeFromAuth();
-  }, [dispatch])
+  const currentUser = useContext(CurrentUserContext);
 
   return (
+
     <div>
       <Header />
       <Switch>
@@ -60,6 +57,7 @@ function App() {
           } 
         </Route>
       </Switch>
+
     </div>
   );
 };
