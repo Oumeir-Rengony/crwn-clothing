@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 
 import {Route, useRouteMatch} from 'react-router-dom';
 
-import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
-import CollectionPage from '../../Pages/collection/collection.component';
+import Spinner from '../../components/spinner/spinner.component';
+import ErrorBoundary from '../../components/error-boundary/error-boundary.component';
+
+const CollectionsOverview = lazy(() => import('../../components/collections-overview/collections-overview.component'));
+const CollectionPage = lazy(() => import('../../Pages/collection/collection.component'));
 
 
 const ShopPage = () => {
@@ -13,13 +16,17 @@ const ShopPage = () => {
 
     return (
         <div className="shop-page">
-            <Route path={`${match.path}`} exact>
-                <CollectionsOverview />
-            </Route>
+            <ErrorBoundary>
+                <Suspense fallback={<Spinner/>}>
+                    <Route path={`${match.path}`} exact>
+                        <CollectionsOverview />
+                    </Route>
 
-            <Route path={`${match.path}/:collectionId`} >
-                <CollectionPage/>
-            </Route>
+                    <Route path={`${match.path}/:collectionId`} >
+                        <CollectionPage/>
+                    </Route>
+                </Suspense>
+            </ErrorBoundary>
             
         </div>
     );

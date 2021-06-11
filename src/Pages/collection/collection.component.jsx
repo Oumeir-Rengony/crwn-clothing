@@ -4,6 +4,7 @@ import {CollectionsContext} from '../../context/collections/collections.provider
 
 import {useParams} from 'react-router-dom';
 
+import WithSpinner from '../../components/spinner/with-spinner/with-spinner.component';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 
 import './collection.styles.scss';
@@ -29,4 +30,4 @@ const CollectionPage = () => {
     );
 };
 
-export default CollectionPage;
+export default WithSpinner(CollectionPage);

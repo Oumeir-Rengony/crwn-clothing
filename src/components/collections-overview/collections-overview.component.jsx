@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import { CollectionsContext } from '../../context/collections/collections.provider';
 
+import WithSpinner from '../spinner/with-spinner/with-spinner.component';
 import CollectionPreview from '../collection-preview/collection-preview.component';
 
 import './collections-overview.styles.scss';
@@ -23,4 +24,4 @@ const CollectionsOverview = () => {
     );
 };
 
-export default CollectionsOverview;
+export default WithSpinner(CollectionsOverview);
