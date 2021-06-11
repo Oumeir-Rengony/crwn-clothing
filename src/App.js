@@ -5,6 +5,8 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import Spinner from './components/spinner/spinner.component';
 import Header from './components/header/header.component';
 import ErrorBoundary from './components/error-boundary/error-boundary.component';
+import ErrorMessage from './components/error-message/error-message.component';
+
 
 import { CurrentUserContext } from './context/current-user/current-user.provider';
 
@@ -41,6 +43,9 @@ const App = () => {
               {
                 currentUser? <Redirect to="/" /> : <SignInAndSignUpPage />
               } 
+            </Route>
+            <Route path="*">
+              <ErrorMessage error="Sorry, page not found" />
             </Route>
           </Suspense>
         </ErrorBoundary>
