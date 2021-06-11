@@ -1,6 +1,6 @@
 import React, {lazy, Suspense} from 'react';
 
-import {Route, useRouteMatch} from 'react-router-dom';
+import {Route, Switch, useRouteMatch} from 'react-router-dom';
 
 import Spinner from '../../components/spinner/spinner.component';
 import ErrorBoundary from '../../components/error-boundary/error-boundary.component';
@@ -19,16 +19,17 @@ const ShopPage = () => {
         <div className="shop-page">
             <ErrorBoundary>
                 <Suspense fallback={<Spinner/>}>
-                    <Route path={`${match.path}`} exact>
-                        <CollectionsOverview />
-                    </Route>
-
-                    <Route path={`${match.path}/:collectionId`} >
-                        <CollectionPage/>
-                    </Route>
-                    <Route path="*">
-                        <ErrorMessage error="Sorry, page not found" />
-                    </Route>
+                    <Switch>
+                        <Route path={`${match.path}`} exact>
+                            <CollectionsOverview />
+                        </Route>
+                        <Route path={`${match.path}/:collectionId`} >
+                            <CollectionPage/>
+                        </Route>
+                        <Route path="*">
+                            <ErrorMessage error="Sorry, page not found" />
+                        </Route>
+                    </Switch>
                 </Suspense>
             </ErrorBoundary>
             

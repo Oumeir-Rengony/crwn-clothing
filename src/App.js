@@ -27,16 +27,17 @@ const App = () => {
 
     <div>
       <Header />
-      <Switch>
-        <ErrorBoundary>
-          <Suspense fallback={<Spinner />}>
+  
+      <ErrorBoundary>
+        <Suspense fallback={<Spinner />}>
+          <Switch>
             <Route path="/" exact>
               <HomePage />
             </Route>
             <Route path="/shop">
               <ShopPage />
             </Route>
-            <Route path="/checkout" exact>
+            <Route path="/checkout">
               <CheckOutPage />
             </Route>
             <Route path="/signin">
@@ -47,9 +48,9 @@ const App = () => {
             <Route path="*">
               <ErrorMessage error="Sorry, page not found" />
             </Route>
-          </Suspense>
-        </ErrorBoundary>
-      </Switch>
+          </Switch>
+        </Suspense>
+      </ErrorBoundary>
 
     </div>
   );
