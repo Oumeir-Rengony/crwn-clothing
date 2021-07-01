@@ -26,7 +26,7 @@ const CartDropdown = () => {
             {
                !isCartHidden &&      
 
-                <StyledCartDropdown>
+                <StyledCartDropdown id="cart_dropdown">
                     <div className="cart-items">
                         {
                             cartItems.length

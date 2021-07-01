@@ -28,6 +28,12 @@ const CartProvider = ({children}) => {
 
     const toggleCartHidden = () => setCartHidden(!isCartHidden);
 
+    const HideCartOutofFocus = () => {
+        if(!isCartHidden){
+            toggleCartHidden();
+        }
+    };
+
     useEffect(() => {
         setCartItemsCount(getCartItemsCount(cartItems));
         setCartTotal(getCartTotal(cartItems));
@@ -38,6 +44,7 @@ const CartProvider = ({children}) => {
             value={{
                 isCartHidden,
                 toggleCartHidden,
+                HideCartOutofFocus,
                 cartItems,
                 addCartItem,
                 removeCartItem,

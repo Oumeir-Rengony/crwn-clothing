@@ -1,4 +1,4 @@
-import React, { useContext, lazy, Suspense} from 'react';
+import React, { useContext, lazy, Suspense, useEffect} from 'react';
 
 import {Switch, Route, Redirect} from 'react-router-dom';
 
@@ -9,6 +9,8 @@ import ErrorMessage from './components/error-message/error-message.component';
 
 
 import { CurrentUserContext } from './context/current-user/current-user.provider';
+import {CartContext} from './context/cart/cart.provider';
+
 
 import './App.scss';
 
@@ -22,6 +24,24 @@ const SignInAndSignUpPage = lazy(() => import('./Pages/sign-in-and-sign-up/sign-
 const App = () => {
 
   const currentUser = useContext(CurrentUserContext);
+  const { HideCartOutofFocus } = useContext(CartContext);
+
+
+  useEffect(()=> {
+    const isCartOutofFocus = (event) => {
+      const element = event.target;
+
+      if(element.closest("#cart_dropdown") === null){
+        HideCartOutofFocus();
+      }
+    };
+
+    window.addEventListener("click", isCartOutofFocus);
+    return () => {
+      window.removeEventListener("click", isCartOutofFocus);
+    }
+
+  }, [HideCartOutofFocus]);
 
   return (
 
