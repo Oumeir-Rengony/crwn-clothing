@@ -5,7 +5,7 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import {auth, createUserProfileDocument} from '../../firebase/firebase-utils';
 
-import './sign-up.styles.scss';
+import styled from 'styled-components';
 
 const SignUp = () => {
     
@@ -52,7 +52,7 @@ const SignUp = () => {
     
 
     return(
-        <div className="sign-up">
+        <StyledSignupWrapper>
             <h2 className="title">I do not have an account</h2>
             <span>Sign up with your email and password</span>
             <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -94,8 +94,32 @@ const SignUp = () => {
                 </FormInput>
                 <CustomButton type="button">SIGN UP</CustomButton>
             </form>
-        </div>
+        </StyledSignupWrapper>
     );
 };
+
+const StyledSignupWrapper = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+
+    & form{
+        width: 100%;
+    }
+
+    @media screen and (max-width: 800px){
+        width: 75%;
+        align-items: center; 
+    }
+
+    .title {
+        margin: 10px 0;
+    }
+
+    button{
+        margin: 0 auto;
+    }
+`;
 
 export default SignUp;

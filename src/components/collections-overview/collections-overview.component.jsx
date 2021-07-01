@@ -5,7 +5,7 @@ import { CollectionsContext } from '../../context/collections/collections.provid
 import WithSpinner from '../spinner/with-spinner/with-spinner.component';
 import CollectionPreview from '../collection-preview/collection-preview.component';
 
-import './collections-overview.styles.scss';
+import styled from 'styled-components';
 
 const CollectionsOverview = () => {
 
@@ -13,15 +13,20 @@ const CollectionsOverview = () => {
     const collections = Object.keys(collectionsMap).map(key => collectionsMap[key])
     
     return(
-        <div className="collections-overview">
+        <StyledCollectionOverviewWrapper>
             {
                 collections.map(({id, ...otherCollectionsProps}) => (
                     <CollectionPreview key={id} {...otherCollectionsProps} />
                 ))
             }
-        </div>
+        </StyledCollectionOverviewWrapper>
         
     );
 };
+
+const StyledCollectionOverviewWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 export default WithSpinner(CollectionsOverview);

@@ -5,7 +5,8 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import {auth, signInWithGoogle} from '../../firebase/firebase-utils';
 
-import './sign-in.styles.scss';
+import styled from 'styled-components';
+// import './sign-in.styles.scss';
 
 const SignIn = () => {
 
@@ -33,7 +34,7 @@ const SignIn = () => {
     };
 
     return(
-        <div className="sign-in">
+        <StyledSigninWrapper>
             <h2> I already have an account</h2>
             <span>Sign in with your email and password</span>
 
@@ -63,8 +64,38 @@ const SignIn = () => {
                     </CustomButton>
                 </div>  
             </form>
-        </div>
+        </StyledSigninWrapper>
     );
 };
+
+const StyledSigninWrapper = styled.div`
+
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+
+    & form{
+        width: 100%;
+    }
+
+    @media screen and (max-width: 800px){
+        width: 75%;
+        align-items: center; 
+    }
+
+    .title{
+        margin: 10px 0;
+    }
+
+    .buttons{
+        display:flex;
+        justify-content: space-around;
+        
+        @media screen and (max-width: 600px){
+            height: 120px;
+            flex-direction: column;
+        }
+    }
+`;
 
 export default SignIn;

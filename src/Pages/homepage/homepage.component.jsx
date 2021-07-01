@@ -2,16 +2,23 @@ import React from 'react';
 
 import Directory from '../../components/directory/directory.component';
 
-
-import './homepage.styles.scss';
+import styled from 'styled-components';
 
 const HomePage = () => {
 
     return(
-        <div className="homepage">
+        <StyledWrapper>
             <Directory />
-        </div>
+        </StyledWrapper>
     );       
 };
+
+const StyledWrapper = styled.div`
+    .homepage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+`;
 
 export default HomePage

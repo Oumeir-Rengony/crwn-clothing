@@ -6,8 +6,7 @@ import CustomButton from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.components';
 
 import {useHistory} from 'react-router-dom';
-
-import './cart-dropdown.styles.scss';
+import styled from 'styled-components';
 
 
 const CartDropdown = () => {
@@ -16,8 +15,6 @@ const CartDropdown = () => {
     const history = useHistory();
     
     const {isCartHidden, toggleCartHidden, cartItems} = useContext(CartContext);
-
-    console.log(cartItems);
 
     const handleCheckoutClick = () => {
         history.push("/checkout");
@@ -29,7 +26,7 @@ const CartDropdown = () => {
             {
                !isCartHidden &&      
 
-                <div className="cart-dropdown">
+                <StyledCartDropdown>
                     <div className="cart-items">
                         {
                             cartItems.length
@@ -38,11 +35,42 @@ const CartDropdown = () => {
                         }
                     </div>
                     <CustomButton onClick={handleCheckoutClick}>GO TO CHECKOUT</CustomButton>
-                </div>
+                </StyledCartDropdown>
             }
        </>
         
     );
 };
+
+const StyledCartDropdown = styled.div`
+
+    position: absolute;
+    width: 240px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: white;
+    top: 90px;
+    right: 40px;
+    z-index: 5;
+
+    .empty-message {
+        font-size: 18px;
+        margin: 50px auto;
+    }
+
+    .cart-items {
+        height: 240px;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+    }
+
+    button {
+        margin-top: auto;
+    }
+`;
 
 export default CartDropdown;

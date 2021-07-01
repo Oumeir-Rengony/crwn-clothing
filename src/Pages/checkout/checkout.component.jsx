@@ -5,14 +5,14 @@ import { CartContext } from '../../context/cart/cart.provider';
 import CheckOutItem from '../../components/checkout-item/checkout-item.component';
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.components';
 
-import './checkout.styles.scss';
+import styled from 'styled-components';
 
 const CheckOutPage = () => {
 
     const {cartItems, cartTotal} = useContext(CartContext);
 
     return (
-        <div className="checkout-page">
+        <StyledCheckoutWrapper>
             <div className="checkout-header">
                 <div className="header-block">
                     <span>Product</span>
@@ -45,8 +45,66 @@ const CheckOutPage = () => {
             </div>
 
             <StripeCheckoutButton price={cartTotal}/>
-        </div>
+
+        </StyledCheckoutWrapper>
     );
 };
+
+const StyledCheckoutWrapper = styled.div`
+    
+    width: 55%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto 0;
+
+    @media screen and (max-width: 800px) {
+        width: 90%;
+    }
+
+    .checkout-header {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid darkgrey;
+
+        .header-block {
+            text-transform: capitalize;
+            width: 23%;
+
+            &:last-child {
+                width: 8%;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            // width: 22%;
+            &:last-child {
+                width: 12%;
+            }
+        }
+    }
+
+    .total {
+        margin-top: 30px;
+        margin-left: auto;
+        font-size: 36px;
+    }
+
+    button {
+        margin-left: auto;
+        margin-top: 50px;
+    }
+
+    .test-warning {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 24px;
+        color: red;
+    }
+  
+`;
 
 export default CheckOutPage;

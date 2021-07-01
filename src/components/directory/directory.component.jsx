@@ -4,21 +4,30 @@ import { DirectoryContext } from '../../context/directory/directory.provider';
 
 import MenuItem from '../menu-item/menu-item.component';
 
-import './directory.styles.scss';
+import styled from 'styled-components';
 
 const Directory = () => {
 
     const sections = useContext(DirectoryContext);
 
     return(
-        <div className="directory-menu">
+        <StyledDirectoryMenu>
             {
                 sections.map(({id, ...otherSectionProps}) => (
                     <MenuItem key={id} {...otherSectionProps}/>
                 ))
             }
-        </div>
+        </StyledDirectoryMenu>
     )
-}
+};
+
+const StyledDirectoryMenu = styled.div`
+    
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+`;
 
 export default Directory;

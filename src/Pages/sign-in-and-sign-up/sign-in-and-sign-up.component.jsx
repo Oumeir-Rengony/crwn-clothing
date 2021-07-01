@@ -3,14 +3,32 @@ import React from 'react';
 import SignIn from '../../components/sign-in/sign-in.component';
 import SignUp from '../../components/sign-up/sign-up.component';
 
-import './sign-in-and-sign-up.styles.scss';
+import styled from 'styled-components';
 
 const SignInAndSignUpPage = () => (
     
-    <div className='sign-in-and-sign-up'>
+    <StyledWrapper>
         <SignIn />
         <SignUp />
-    </div>
+    </StyledWrapper>
 );
+
+const StyledWrapper = styled.div`
+
+    width:850px;
+    display:flex;
+    justify-content: space-between;
+    margin:30px auto;
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+        width: unset;
+        align-items: center;
+        
+        > *:first-child {
+          margin-bottom: 50px;
+        }
+    }
+`;
 
 export default SignInAndSignUpPage;
