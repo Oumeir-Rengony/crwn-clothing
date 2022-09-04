@@ -16,5 +16,5 @@ You will also see any lint errors in the console.
 
 ## Website Demo
 
-Go to https://crwn-clothing-prod-build.herokuapp.com/
+Go to https://crown-clothing.onrender.com/
 
